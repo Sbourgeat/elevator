@@ -1,3 +1,5 @@
+sue std::env
+
 pub fn run_simulation() {
     //1. Store location, velocity, and acceleration state
     let mut location: f64 = 0.0; // meters
@@ -33,3 +35,46 @@ pub fn run_simulation() {
 fn main() {
     run_simulation();
 }
+
+
+
+
+let buffer = match env::args().nth(1) {
+    Some(ref fp) if  *fp == "-".to_string() => {
+        let mut buffer = String::new();
+        io::stdin().read_to_string(&mut buffer)
+            .expect("read_to_string failed");
+        buffer
+    },
+    None => {
+        let fp = "text1.txt";
+        let mut buffer = String::new();
+        File::open(fp)
+            .expect("File::open failed")
+            .read_to_string(&mut buffer)
+            .expect("read_to_string failed");
+        buffer
+    },
+    Some(fp) => {
+        let mut buffer = String::new();
+        File::open(fp)
+            .expect("File::open failed")
+            .read_to_string(&mut buffer)
+            .expect("read_to_string failed");
+        buffer
+    }
+};
+
+
+
+for (li, l) in buffer.lines().enumerate(){
+    if li==0 {
+        floor_count = l.parse::<u64>().unwrap();
+    } else if li == 1 {
+        floor_height = l.parse::<f64>().unwrap();
+    } else {
+        floor_requests.push(l.parse::<u64>.unwrap());
+    }
+}
+
+
