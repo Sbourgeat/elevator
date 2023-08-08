@@ -78,3 +78,24 @@ for (li, l) in buffer.lines().enumerate(){
 }
 
 
+\\ Updating velocity, location, and acceleration
+
+let mut prev_loop_time = Instant::now();
+let now = Instant::now();
+let dt = now.duration_since(prev_loop_time).as_fractional_secs();
+prev_loop_time = now;
+
+
+thread::sleep(time::Duration::from_millis(10));
+
+
+\\ configure the elevator
+
+location = location + velocity * dt;
+velocity = velocity + acceleration * dt;
+acceleration = {
+    let F = (up_input_voltage - down_input_voltagen) *8.0;
+    let m = 1200000.0;
+    //-9.8 is an apporoximation of acceleration due to gravity -9.8 + F/m
+};
+
