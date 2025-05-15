@@ -1,4 +1,4 @@
 # elevator
 rust programming training;
 
-A simple rust implementation simulating an elevator in a building and monitoring the speed, acceleration, and positon over time.
+This is a simple Rust implementation that simulates an elevator in a building and monitors its speed, acceleration, and position over time.
